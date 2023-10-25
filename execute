@@ -1,0 +1,3 @@
+conda activate pytorch
+cd /home/c307/yuyi/apnet
+python predict.py --input 1.png

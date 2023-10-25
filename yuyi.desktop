@@ -1,0 +1,11 @@
+[Desktop Entry]
+	
+Name=hecheng
+	
+Exec =bash -c 'source /home/c307/anaconda3/bin/activate /home/c307/anaconda3/envs/pytorch && python3 /home/c307/yuyi/apnet/predict.py --input 1.png  '
+	
+
+	
+Terminal=true
+
+Type=Application
