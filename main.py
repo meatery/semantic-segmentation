@@ -31,12 +31,12 @@ def get_argparser():
     parser.add_argument("--num_classes", type=int, default=None,
                         help="num classes (default: None)")
 
-    # Deeplab Options
+    # Ourmodel Options
     available_models = sorted(name for name in network.modeling.__dict__ if name.islower() and \
                               not (name.startswith("__") or name.startswith('_')) and callable(
                               network.modeling.__dict__[name])
                               )
-    parser.add_argument("--model", type=str, default='deeplabv3plus_mobilenet',
+    parser.add_argument("--model", type=str, default='ourmodelplus_mobilenet',
                         choices=available_models, help='model name')
     parser.add_argument("--separable_conv", action='store_true', default=False,
                         help="apply separable conv to decoder and aspp")
@@ -289,7 +289,6 @@ def main():
     cur_itrs = 0
     cur_epochs = 0
     if opts.ckpt is not None and os.path.isfile(opts.ckpt):
-        # https://github.com/VainF/DeepLabV3Plus-Pytorch/issues/8#issuecomment-605601402, @PytaichukBohdan
         checkpoint = torch.load(opts.ckpt, map_location=torch.device('cpu'))
         model.load_state_dict(checkpoint["model_state"])
         model = nn.DataParallel(model)

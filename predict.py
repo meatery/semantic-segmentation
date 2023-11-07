@@ -29,13 +29,13 @@ def get_argparser():
     parser.add_argument("--dataset", type=str, default='cityscapes',
                         choices=['voc', 'cityscapes'], help='Name of training set')
 
-    # Deeplab Options
+    # Ourmodel Options
     available_models = sorted(name for name in network.modeling.__dict__ if name.islower() and \
                               not (name.startswith("__") or name.startswith('_')) and callable(
                               network.modeling.__dict__[name])
                               )
 
-    parser.add_argument("--model", type=str, default='deeplabv3plus_resnet101',
+    parser.add_argument("--model", type=str, default='ourmodelplus_resnet101',
                         choices=available_models, help='model name')
     parser.add_argument("--separable_conv", action='store_true', default=False,
                         help="apply separable conv to decoder and aspp")
